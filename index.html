@@ -24,7 +24,213 @@
   --divider:      rgba(122,148,104,0.15);
 }
 
-/* ─── RESET ───────────────────────────────────────────── */
+/* ─── CORAL / DESSERT THEME ──────────────────────────── */
+body.dessert-mode {
+  background: #FDF6F0;
+}
+body.dessert-mode nav { background: #7A5248; }
+body.dessert-mode .nav-logo-icon { background: #EDAA8F; }
+body.dessert-mode .nav-add-btn { background: #EDAA8F; }
+body.dessert-mode .nav-add-btn:hover { background: #DE9070; }
+body.dessert-mode .detail-header { background: #8C5E54; }
+body.dessert-mode .detail-header::after { background: #FDF6F0; }
+body.dessert-mode .hero-bg-circle-1 { background: radial-gradient(circle, rgba(237,170,143,0.2) 0%, transparent 70%); }
+body.dessert-mode .detail-back:hover { color: #EDAA8F; }
+body.dessert-mode .detail-meta-value { color: #B87660; }
+body.dessert-mode .ingr-dot { background: #EDAA8F; }
+body.dessert-mode .ingr-amount { color: #B87660; }
+body.dessert-mode .step-num { color: rgba(237,170,143,0.35); }
+body.dessert-mode .step-text { border-left-color: rgba(237,170,143,0.35); }
+body.dessert-mode .tip-box { background: rgba(237,170,143,0.1); border-left-color: #EDAA8F; color: #9A6050; }
+body.dessert-mode .tip-box strong { color: #EDAA8F; }
+body.dessert-mode .detail-grocery { background: #7A5248; }
+body.dessert-mode .grocery-section-title { color: #EDAA8F; }
+body.dessert-mode .grocery-item.checked .gcheck { background: #EDAA8F; border-color: #EDAA8F; }
+body.dessert-mode .grocery-clear-btn { border-color: rgba(237,170,143,0.45); color: #EDAA8F; }
+body.dessert-mode .grocery-clear-btn:hover { background: #EDAA8F; color: #fff; }
+body.dessert-mode .notes-textarea:focus { border-color: #EDAA8F; }
+body.dessert-mode .star.lit { color: #EDAA8F; }
+body.dessert-mode .star:hover { color: #EDAA8F; }
+body.dessert-mode .detail-body { background: #FDF6F0; }
+body.dessert-mode .detail-instructions { background: #FDF6F0; }
+body.dessert-mode .notes-textarea { background: #FDF6F0; }
+body.dessert-mode .detail-notes-section { background: #fff; }
+body.dessert-mode .detail-source { background: #FAEAE0; }
+body.dessert-mode .sync-indicator { color: #B87660 !important; }
+
+/* ─── MASTER GROCERY LIST ─────────────────────────────── */
+.shopping-section {
+  padding: 0 40px 64px;
+}
+.shopping-card {
+  background: #fff;
+  border: 1px solid var(--divider);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(26,46,31,0.06);
+}
+.shopping-header {
+  background: var(--green-dark);
+  padding: 28px 32px 24px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.shopping-title {
+  font-family: 'Fraunces', serif;
+  font-size: 24px; font-weight: 600;
+  color: #fff; letter-spacing: -0.01em;
+}
+.shopping-sub {
+  font-size: 13px; color: rgba(255,255,255,0.45);
+  margin-top: 4px;
+}
+.shopping-controls {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+.recipe-picker {
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  min-width: 200px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+.recipe-picker:focus { outline: none; }
+.recipe-picker option { background: var(--green-dark); color: #fff; }
+.add-to-basket-btn {
+  background: var(--green-bright);
+  color: #fff;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.add-to-basket-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+.basket-body {
+  padding: 24px 32px 32px;
+}
+.basket-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-soft);
+}
+.basket-empty-icon { font-size: 40px; margin-bottom: 12px; opacity: 0.4; }
+.basket-empty-text { font-size: 14px; }
+
+.basket-recipe-group { margin-bottom: 28px; }
+.basket-recipe-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.basket-recipe-label::after { content:''; flex:1; height:1px; background: var(--divider); }
+.basket-recipe-remove {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #E07070; cursor: pointer;
+  background: none; border: none; padding: 0;
+  transition: color 0.15s;
+}
+.basket-recipe-remove:hover { color: #C04040; }
+
+.basket-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--divider);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.basket-item:last-child { border-bottom: none; }
+.basket-item:hover { opacity: 0.75; }
+.basket-check {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--divider);
+  border-radius: 5px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  background: #fff;
+}
+.basket-item.checked .basket-check {
+  background: var(--green-bright); border-color: var(--green-bright);
+}
+.basket-item.checked .basket-check::after {
+  content: '✓'; font-size: 11px; color: #fff; font-weight: 700;
+}
+.basket-item.checked .basket-item-name {
+  text-decoration: line-through; opacity: 0.4;
+}
+.basket-item-name { font-size: 14px; color: var(--text-dark); }
+.basket-item-amount {
+  font-size: 12px; font-weight: 500;
+  color: var(--text-soft); margin-left: auto;
+}
+.basket-footer {
+  padding: 16px 32px 24px;
+  border-top: 1px solid var(--divider);
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--green-mist);
+}
+.basket-progress {
+  font-size: 12px; font-weight: 500; color: var(--text-soft);
+}
+.basket-clear-btn {
+  background: transparent;
+  border: 1.5px solid var(--divider);
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: var(--text-soft); cursor: pointer;
+  transition: all 0.2s;
+}
+.basket-clear-btn:hover { border-color: #E07070; color: #E07070; }
+
+.edit-mode-btn {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.edit-mode-btn:hover, .edit-mode-btn.active {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+}
+.basket-item-remove {
+  margin-left: auto;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(224,112,112,0.12);
+  border: none;
+  color: #E07070;
+  font-size: 14px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.basket-item-remove:hover { background: rgba(224,112,112,0.28); }
+
+
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; font-size: 17px; }
 
@@ -695,6 +901,94 @@ nav {
 .detail-source a { color: var(--green-mid); text-decoration: none; font-weight: 500; }
 .detail-source a:hover { color: var(--green-bright); }
 
+/* ─── RECIPE SCALER ───────────────────────────────────── */
+.scaler-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--divider);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.scaler-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  white-space: nowrap;
+}
+.scaler-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--green-mist);
+  border: 1.5px solid var(--divider);
+  border-radius: 10px;
+  padding: 3px;
+}
+.scaler-btn {
+  width: 30px; height: 30px;
+  border: none;
+  background: transparent;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--green-mid);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1;
+}
+.scaler-btn:hover { background: var(--green-bright); color: #fff; }
+.scaler-btn:disabled { opacity: 0.3; cursor: default; }
+.scaler-btn:disabled:hover { background: transparent; color: var(--green-mid); }
+.scaler-value {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+  min-width: 56px;
+  text-align: center;
+  line-height: 1;
+}
+.scaler-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.scaler-preset {
+  padding: 5px 13px;
+  border-radius: 20px;
+  border: 1.5px solid var(--divider);
+  background: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.scaler-preset:hover { border-color: var(--green-bright); color: var(--green-bright); }
+.scaler-preset.active { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+.scaler-reset {
+  font-size: 11px; font-weight: 500;
+  color: var(--text-soft);
+  cursor: pointer;
+  background: none; border: none; padding: 0;
+  transition: color 0.15s;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.scaler-reset:hover { color: var(--green-mid); }
+body.dessert-mode .scaler-controls { background: #FDF6F0; }
+body.dessert-mode .scaler-btn { color: #B87660; }
+body.dessert-mode .scaler-btn:hover { background: #EDAA8F; color: #fff; }
+body.dessert-mode .scaler-preset:hover { border-color: #EDAA8F; color: #B87660; }
+body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A5248; }
+
 /* ─── ANIMATIONS ──────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(14px); }
@@ -722,10 +1016,10 @@ nav {
 <nav>
   <div class="nav-logo" onclick="showHome()">
     <div class="nav-logo-icon">🌿</div>
-    Recipe Database
+    Our Recipe Database
   </div>
   <div class="nav-right">
-    <span class="nav-count" id="recipe-count">1 Recipe</span>
+    <span class="nav-count" id="recipe-count">4 Recipes</span>
     <button class="nav-add-btn" onclick="alert('To add a recipe, ask Claude to generate one and add it to this file!')">+ Add Recipe</button>
   </div>
 </nav>
@@ -736,8 +1030,8 @@ nav {
   <div class="hero">
     <div class="hero-bg-circle hero-bg-circle-1"></div>
     <div class="hero-bg-circle hero-bg-circle-2"></div>
-    <div class="hero-eyebrow">Your personal collection</div>
-    <h1 class="hero-title">Recipe<br><em>Database</em></h1>
+    <div class="hero-eyebrow">Our personal collection</div>
+    <h1 class="hero-title">Our Recipe<br><em>Database</em></h1>
     <p class="hero-sub">Handpicked recipes, saved and ready whenever you need them.</p>
   </div>
 
@@ -749,6 +1043,10 @@ nav {
     <button class="filter-btn" onclick="filterRecipes('Breakfast', this)">Breakfast</button>
     <button class="filter-btn" onclick="filterRecipes('Vegan', this)">Vegan</button>
     <button class="filter-btn" onclick="filterRecipes('Meal Prep', this)">Meal Prep</button>
+    <button class="filter-btn" onclick="filterRecipes('Dessert', this)">Dessert</button>
+    <button class="filter-btn" onclick="filterRecipes('Cookies', this)">Cookies</button>
+    <button class="filter-btn" onclick="filterRecipes('Instant Pot', this)">Instant Pot</button>
+    <button class="filter-btn" onclick="filterRecipes('Beef', this)">Beef</button>
   </div>
 
   <div class="grid-section">
@@ -783,6 +1081,90 @@ nav {
         </div>
       </div>
 
+      <!-- CARD: Levain Cookies -->
+      <div class="recipe-card" data-tags="Dessert,Cookies,Baking" onclick="showDetail('levain-cookies')">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #FDF3E3 0%, #F5DEB355 100%);">
+          <span class="card-thumb-icon">🍪</span>
+          <span class="card-badge">Cookies</span>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Dessert</span>
+            <span class="card-tag">Cookies</span>
+            <span class="card-tag">Baking</span>
+          </div>
+          <div class="card-title">Levain Bakery Chocolate Chip Cookies</div>
+          <div class="card-subtitle">Thick & gooey copycat</div>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <span class="card-meta-label">Total</span>
+              <span class="card-meta-value">21 min</span>
+            </div>
+            <div class="card-meta-item">
+              <span class="card-meta-label">Makes</span>
+              <span class="card-meta-value">8</span>
+            </div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD: Refried Beans -->
+      <div class="recipe-card" data-tags="Dinner,Mexican,Side Dish,Vegan,Instant Pot" onclick="showDetail('refried-beans')">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #F5EED8 0%, #D4A96A22 100%);">
+          <span class="card-thumb-icon">🫘</span>
+          <span class="card-badge">Instant Pot</span>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Dinner</span>
+            <span class="card-tag">Mexican</span>
+            <span class="card-tag">Vegan</span>
+          </div>
+          <div class="card-title">Instant Pot Refried Beans</div>
+          <div class="card-subtitle">From scratch in about an hour</div>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <span class="card-meta-label">Total</span>
+              <span class="card-meta-value">70 min</span>
+            </div>
+            <div class="card-meta-item">
+              <span class="card-meta-label">Serves</span>
+              <span class="card-meta-value">4–6</span>
+            </div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD: 30 Minute Chili -->
+      <div class="recipe-card" data-tags="Dinner,Beef,Comfort Food,Soup" onclick="showDetail('chili')">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #F9EDE8 0%, #C0614022 100%);">
+          <span class="card-thumb-icon">🌶️</span>
+          <span class="card-badge">Comfort Food</span>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Dinner</span>
+            <span class="card-tag">Beef</span>
+            <span class="card-tag">Comfort Food</span>
+          </div>
+          <div class="card-title">30 Minute Chili</div>
+          <div class="card-subtitle">Brian Lagerstrom</div>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <span class="card-meta-label">Total</span>
+              <span class="card-meta-value">30 min</span>
+            </div>
+            <div class="card-meta-item">
+              <span class="card-meta-label">Serves</span>
+              <span class="card-meta-value">6–8</span>
+            </div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+      </div>
+
       <!-- EMPTY SLOT -->
       <div class="empty-slot" onclick="alert('Ask Claude to add your next recipe!')">
         <div class="empty-slot-icon">+</div>
@@ -791,9 +1173,42 @@ nav {
 
     </div>
   </div>
-</div>
 
-<!-- ════ DETAIL VIEW ════ -->
+  <!-- ── MASTER GROCERY LIST ── -->
+  <div class="shopping-section">
+    <div class="shopping-card">
+      <div class="shopping-header">
+        <div>
+          <div class="shopping-title">🛒 Shopping Basket</div>
+          <div class="shopping-sub">Pick a recipe and add its ingredients to your list</div>
+        </div>
+        <div class="shopping-controls">
+          <select class="recipe-picker" id="recipe-picker">
+            <option value="">Choose a recipe…</option>
+            <option value="mexican-rice">🍚 Authentic Mexican Rice</option>
+            <option value="levain-cookies">🍪 Levain Bakery Cookies</option>
+            <option value="refried-beans">🫘 Instant Pot Refried Beans</option>
+            <option value="chili">🌶️ 30 Minute Chili</option>
+          </select>
+          <button class="add-to-basket-btn" onclick="addToBasket()">+ Add to Basket</button>
+          <button class="edit-mode-btn" id="edit-mode-btn" onclick="toggleEditMode()">✏️ Edit</button>
+        </div>
+      </div>
+      <div class="basket-body" id="basket-body">
+        <div class="basket-empty" id="basket-empty">
+          <div class="basket-empty-icon">🧺</div>
+          <div class="basket-empty-text">Your basket is empty — pick a recipe above to get started</div>
+        </div>
+        <div id="basket-groups"></div>
+      </div>
+      <div class="basket-footer" id="basket-footer" style="display:none;">
+        <span class="basket-progress" id="basket-progress">0 of 0 items checked</span>
+        <button class="basket-clear-btn" onclick="clearBasket()">Clear Basket</button>
+      </div>
+    </div>
+  </div>
+
+</div>
 <div id="detail-view" class="view">
   <div id="detail-mexican-rice">
 
@@ -828,6 +1243,20 @@ nav {
       <div class="detail-meta-item">
         <div class="detail-meta-label">Serves</div>
         <div class="detail-meta-value">5</div>
+      </div>
+    </div>
+    <div class="scaler-bar" id="scaler-mexican-rice">
+      <span class="scaler-label">Scale Recipe</span>
+      <div class="scaler-controls">
+        <button class="scaler-btn" onclick="adjustScale('mexican-rice',-0.5)" id="scaler-minus-mexican-rice">−</button>
+        <span class="scaler-value" id="scaler-val-mexican-rice">1×</span>
+        <button class="scaler-btn" onclick="adjustScale('mexican-rice',0.5)">+</button>
+      </div>
+      <div class="scaler-presets">
+        <button class="scaler-preset active" onclick="setScale('mexican-rice',1,this)" data-val="1">1× Original</button>
+        <button class="scaler-preset" onclick="setScale('mexican-rice',1.5,this)" data-val="1.5">1.5×</button>
+        <button class="scaler-preset" onclick="setScale('mexican-rice',2,this)" data-val="2">2× Double</button>
+        <button class="scaler-preset" onclick="setScale('mexican-rice',3,this)" data-val="3">3× Triple</button>
       </div>
     </div>
 
@@ -897,7 +1326,7 @@ nav {
       <div class="notes-block">
         <div class="notes-label" style="display:flex;align-items:center;justify-content:space-between;">
           My Notes
-          <span id="sync-indicator" style="font-size:10px;color:var(--green-mid);opacity:0;transition:opacity 0.4s;font-weight:500;">✓ Saved</span>
+          <span id="sync-indicator" class="sync-indicator" style="font-size:10px;color:var(--green-mid);opacity:0;transition:opacity 0.4s;font-weight:500;">✓ Saved</span>
         </div>
         <textarea class="notes-textarea" placeholder="Add your notes after making it — tweaks, swaps, how it turned out…"></textarea>
       </div>
@@ -918,8 +1347,8 @@ nav {
         <div class="rating-row">
           <span class="rating-name">Would Make Again?</span>
           <div style="display:flex;gap:8px;">
-            <button onclick="toggleMakeAgain(this,'yes')" id="ma-yes" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">Yes</button>
-            <button onclick="toggleMakeAgain(this,'no')" id="ma-no" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">No</button>
+            <button onclick="toggleMakeAgain(this,'yes')" class="ma-yes-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">Yes</button>
+            <button onclick="toggleMakeAgain(this,'no')" class="ma-no-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">No</button>
           </div>
         </div>
       </div>
@@ -931,196 +1360,1027 @@ nav {
     </div>
 
   </div>
+
+<!-- ════ DETAIL: LEVAIN COOKIES ════ -->
+  <div id="detail-levain-cookies" style="display:none;">
+
+  <div class="detail-back" onclick="showHome()">
+    <span>←</span> Back to Recipe Database
+  </div>
+
+  <div class="detail-header">
+    <div class="detail-tag-row">
+      <span class="detail-tag">Dessert</span>
+      <span class="detail-tag">Cookies</span>
+      <span class="detail-tag">Baking</span>
+    </div>
+    <div class="detail-title">Levain Bakery Chocolate Chip Cookies</div>
+    <div class="detail-subtitle">Thick, gooey copycat — by Melissa Stadler</div>
+  </div>
+
+  <div class="detail-meta-strip">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Prep</div>
+      <div class="detail-meta-value">10<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Cook</div>
+      <div class="detail-meta-value">11<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Total</div>
+      <div class="detail-meta-value">21<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Makes</div>
+      <div class="detail-meta-value">8</div>
+    </div>
+  </div>
+  <div class="scaler-bar" id="scaler-levain-cookies">
+    <span class="scaler-label">Scale Recipe</span>
+    <div class="scaler-controls">
+      <button class="scaler-btn" onclick="adjustScale('levain-cookies',-0.5)" id="scaler-minus-levain-cookies">−</button>
+      <span class="scaler-value" id="scaler-val-levain-cookies">1×</span>
+      <button class="scaler-btn" onclick="adjustScale('levain-cookies',0.5)">+</button>
+    </div>
+    <div class="scaler-presets">
+      <button class="scaler-preset active" onclick="setScale('levain-cookies',1,this)" data-val="1">1× Original</button>
+      <button class="scaler-preset" onclick="setScale('levain-cookies',1.5,this)" data-val="1.5">1.5×</button>
+      <button class="scaler-preset" onclick="setScale('levain-cookies',2,this)" data-val="2">2× Double</button>
+      <button class="scaler-preset" onclick="setScale('levain-cookies',3,this)" data-val="3">3× Triple</button>
+    </div>
+  </div>
+  <div class="detail-body">
+
+    <!-- Ingredients -->
+    <div class="detail-ingredients">
+      <div class="detail-section-label">Ingredients</div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 cup</span><span>cold butter, cut into small cubes</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 cup</span><span>brown sugar</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">½ cup</span><span>sugar</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2</span><span>eggs</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1½ cups</span><span>cake flour*</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1½ cups</span><span>all-purpose flour</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 tsp</span><span>cornstarch</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">¾ tsp</span><span>baking soda</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">¾ tsp</span><span>salt</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 cups</span><span>chocolate chips</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 cups</span><span>walnuts, roughly chopped</span></div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="detail-instructions">
+      <div class="detail-section-label">Instructions</div>
+      <div class="step"><div class="step-num">01</div><div class="step-text">Preheat oven to 410°F.</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-text">In a large mixing bowl, cream together cold cubed butter, brown sugar, and sugar for 4 minutes until creamy.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-text">Add eggs one at a time, mixing well after each one.</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-text">Stir in both flours, cornstarch, baking soda, and salt. Mix until just combined — do not overmix. Fold in chocolate chips and walnuts.</div></div>
+      <div class="step"><div class="step-num">05</div><div class="step-text">Divide into 8 large balls and place on a lightly colored cookie sheet — only 4 per sheet, they're big!</div></div>
+      <div class="step"><div class="step-num">06</div><div class="step-text">Bake for 9–12 minutes until golden brown on top. Let rest for at least 10 minutes before eating so they can set up.</div></div>
+      <div class="tip-box"><strong>Key tips</strong>Cold butter is essential — don't let it soften. The high oven temp (410°F) cooks the outside fast and keeps the inside gooey. Cake flour can be subbed with all-purpose. Add 1 tsp vanilla with the eggs if you like, though the original Levain recipe skips it.</div>
+    </div>
+
+    <!-- Grocery -->
+    <div class="detail-grocery" id="grocery-levain">
+      <div class="grocery-header">
+        <div class="grocery-title">Grocery List</div>
+        <div class="grocery-sub">Tap to check off as you shop</div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Dairy & Eggs</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Cold butter</span><span class="gamount">1 cup</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Eggs</span><span class="gamount">2</span></div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Pantry</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Brown sugar</span><span class="gamount">1 cup</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Sugar</span><span class="gamount">½ cup</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Cake flour</span><span class="gamount">1½ cups</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">All-purpose flour</span><span class="gamount">1½ cups</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Cornstarch</span><span class="gamount">1 tsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Baking soda</span><span class="gamount">¾ tsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Salt</span><span class="gamount">¾ tsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Chocolate chips</span><span class="gamount">2 cups</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Walnuts</span><span class="gamount">2 cups</span></div>
+      </div>
+      <div class="grocery-footer">
+        <button class="grocery-clear-btn" onclick="clearGrocery()">Clear All Checks</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Notes + Rating -->
+  <div class="detail-notes-section">
+    <div class="notes-block">
+      <div class="notes-label" style="display:flex;align-items:center;justify-content:space-between;">
+        My Notes
+        <span id="sync-indicator-2" class="sync-indicator" style="font-size:10px;color:var(--green-mid);opacity:0;transition:opacity 0.4s;font-weight:500;">✓ Saved</span>
+      </div>
+      <textarea class="notes-textarea" placeholder="Add your notes after making it — tweaks, swaps, how it turned out…"></textarea>
+    </div>
+    <div class="rating-block">
+      <div class="notes-label">My Rating</div>
+      <div class="rating-row">
+        <span class="rating-name">Overall</span>
+        <div class="stars" data-group="overall2"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Taste</span>
+        <div class="stars" data-group="taste2"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Ease</span>
+        <div class="stars" data-group="ease2"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Would Make Again?</span>
+        <div style="display:flex;gap:8px;">
+          <button onclick="toggleMakeAgain(this,'yes')" class="ma-yes-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">Yes</button>
+          <button onclick="toggleMakeAgain(this,'no')" class="ma-no-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-source">
+    Recipe by Melissa Stadler &nbsp;·&nbsp;
+    <a href="https://www.modernhoney.com/levain-bakery-chocolate-chip-crush-cookies/" target="_blank">modernhoney.com</a>
+  </div>
+
 </div>
 
-<!-- Firebase SDK -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+<!-- ════ DETAIL: REFRIED BEANS ════ -->
+  <div id="detail-refried-beans" style="display:none;">
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyBHgAxmYlFWa2T8HkxydccpPMCEQsZjotY",
-    authDomain: "recipe-database-215fa.firebaseapp.com",
-    projectId: "recipe-database-215fa",
-    storageBucket: "recipe-database-215fa.firebasestorage.app",
-    messagingSenderId: "584065977272",
-    appId: "1:584065977272:web:61eecdc84fea6e0c201d4d"
-  };
+  <div class="detail-back" onclick="showHome()">
+    <span>←</span> Back to Recipe Database
+  </div>
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  <div class="detail-header">
+    <div class="detail-tag-row">
+      <span class="detail-tag">Dinner</span>
+      <span class="detail-tag">Mexican</span>
+      <span class="detail-tag">Side Dish</span>
+      <span class="detail-tag">Vegan</span>
+      <span class="detail-tag">Instant Pot</span>
+    </div>
+    <div class="detail-title">Instant Pot Refried Beans</div>
+    <div class="detail-subtitle">From dried beans, from scratch</div>
+  </div>
 
-  // ── Debounce helper ──
-  function debounce(fn, delay) {
-    let timer;
-    return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), delay); };
+  <div class="detail-meta-strip">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Prep</div>
+      <div class="detail-meta-value">10<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Cook</div>
+      <div class="detail-meta-value">60<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Total</div>
+      <div class="detail-meta-value">70<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Serves</div>
+      <div class="detail-meta-value">4–6</div>
+    </div>
+  </div>
+  <div class="scaler-bar" id="scaler-refried-beans">
+    <span class="scaler-label">Scale Recipe</span>
+    <div class="scaler-controls">
+      <button class="scaler-btn" onclick="adjustScale('refried-beans',-0.5)" id="scaler-minus-refried-beans">−</button>
+      <span class="scaler-value" id="scaler-val-refried-beans">1×</span>
+      <button class="scaler-btn" onclick="adjustScale('refried-beans',0.5)">+</button>
+    </div>
+    <div class="scaler-presets">
+      <button class="scaler-preset active" onclick="setScale('refried-beans',1,this)" data-val="1">1× Original</button>
+      <button class="scaler-preset" onclick="setScale('refried-beans',1.5,this)" data-val="1.5">1.5×</button>
+      <button class="scaler-preset" onclick="setScale('refried-beans',2,this)" data-val="2">2× Double</button>
+      <button class="scaler-preset" onclick="setScale('refried-beans',3,this)" data-val="3">3× Triple</button>
+    </div>
+  </div>
+
+  <div class="detail-body">
+
+    <!-- Ingredients -->
+    <div class="detail-ingredients">
+      <div class="detail-section-label">Beans</div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">8 oz</span><span>dried pinto beans, sorted & rinsed</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 cloves</span><span>garlic, whole with skins on</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">½ tsp</span><span>fine sea salt</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">¼ tsp</span><span>baking soda</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1</span><span>bay leaf</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">3 cups</span><span>water</span></div>
+      <div class="detail-section-label" style="margin-top:18px;">Aromatics</div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">¼ cup</span><span>vegetable oil</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 medium</span><span>onion, minced</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 cloves</span><span>garlic, smashed</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1</span><span>jalapeño, minced</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1½ tsp</span><span>fine sea salt (total)</span></div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="detail-instructions">
+      <div class="detail-section-label">Instructions</div>
+      <div class="step"><div class="step-num">01</div><div class="step-text">Add the beans, whole garlic cloves, ½ tsp salt, baking soda, bay leaf, and water to your Instant Pot. Lock the lid and pressure cook on High for 40 minutes, then quick release. Discard the bay leaf and garlic. Reserve all beans and cooking liquid.</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-text">Heat vegetable oil in a large frypan over medium-high until shimmering. Add the minced onion, smashed garlic, jalapeño, and ½ tsp salt. Sauté until onions are browned at the edges, about 5 minutes.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-text">Add the beans and all their cooking liquid to the frypan — careful, the hot oil may splatter. Sprinkle 1 tsp salt over the beans. Mash and stir, distributing the onions evenly throughout.</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-text">Keep cooking, mashing and stirring occasionally, until the beans thicken to your liking — about 8 minutes. Serve and enjoy!</div></div>
+      <div class="tip-box"><strong>Tips</strong>For smooth beans, use a food processor instead of a masher. No Instant Pot? Simmer covered on the stovetop for 2 hours instead. Want cowboy-style? Swap vegetable oil for bacon fat. Skip the jalapeño for kid-friendly beans, or use a serrano for extra heat.</div>
+    </div>
+
+    <!-- Grocery -->
+    <div class="detail-grocery" id="grocery-refried-beans">
+      <div class="grocery-header">
+        <div class="grocery-title">Grocery List</div>
+        <div class="grocery-sub">Tap to check off as you shop</div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Produce</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Onion</span><span class="gamount">1 medium</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Garlic</span><span class="gamount">4 cloves</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Jalapeño</span><span class="gamount">1</span></div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Pantry</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Dried pinto beans</span><span class="gamount">8 oz</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Vegetable oil</span><span class="gamount">¼ cup</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Fine sea salt</span><span class="gamount">1½ tsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Baking soda</span><span class="gamount">¼ tsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Bay leaf</span><span class="gamount">1</span></div>
+      </div>
+      <div class="grocery-footer">
+        <button class="grocery-clear-btn" onclick="clearGrocery()">Clear All Checks</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Notes + Rating -->
+  <div class="detail-notes-section">
+    <div class="notes-block">
+      <div class="notes-label" style="display:flex;align-items:center;justify-content:space-between;">
+        My Notes
+        <span class="sync-indicator" style="font-size:10px;color:var(--green-mid);opacity:0;transition:opacity 0.4s;font-weight:500;">✓ Saved</span>
+      </div>
+      <textarea class="notes-textarea" placeholder="Add your notes after making it — tweaks, swaps, how it turned out…"></textarea>
+    </div>
+    <div class="rating-block">
+      <div class="notes-label">My Rating</div>
+      <div class="rating-row">
+        <span class="rating-name">Overall</span>
+        <div class="stars" data-group="overall3"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Taste</span>
+        <div class="stars" data-group="taste3"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Ease</span>
+        <div class="stars" data-group="ease3"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Would Make Again?</span>
+        <div style="display:flex;gap:8px;">
+          <button onclick="toggleMakeAgain(this,'yes')" class="ma-yes-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">Yes</button>
+          <button onclick="toggleMakeAgain(this,'no')" class="ma-no-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-source">
+    Recipe by Mike Vrobel &nbsp;·&nbsp;
+    <a href="https://www.dadcooksdinner.com/pressure-cooker-refried-pinto-beans/" target="_blank">dadcooksdinner.com</a>
+  </div>
+
+</div>
+
+<!-- ════ DETAIL: 30 MINUTE CHILI ════ -->
+  <div id="detail-chili" style="display:none;">
+
+  <div class="detail-back" onclick="showHome()">
+    <span>←</span> Back to Recipe Database
+  </div>
+
+  <div class="detail-header">
+    <div class="detail-tag-row">
+      <span class="detail-tag">Dinner</span>
+      <span class="detail-tag">Beef</span>
+      <span class="detail-tag">Comfort Food</span>
+      <span class="detail-tag">Soup</span>
+    </div>
+    <div class="detail-title">30 Minute Chili</div>
+    <div class="detail-subtitle">Brian Lagerstrom</div>
+  </div>
+
+  <div class="detail-meta-strip">
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Prep</div>
+      <div class="detail-meta-value">10<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Cook</div>
+      <div class="detail-meta-value">20<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Total</div>
+      <div class="detail-meta-value">30<span class="detail-meta-unit"> min</span></div>
+    </div>
+    <div class="detail-meta-item">
+      <div class="detail-meta-label">Serves</div>
+      <div class="detail-meta-value">6–8</div>
+    </div>
+  </div>
+  <div class="scaler-bar" id="scaler-chili">
+    <span class="scaler-label">Scale Recipe</span>
+    <div class="scaler-controls">
+      <button class="scaler-btn" onclick="adjustScale('chili',-0.5)" id="scaler-minus-chili">−</button>
+      <span class="scaler-value" id="scaler-val-chili">1×</span>
+      <button class="scaler-btn" onclick="adjustScale('chili',0.5)">+</button>
+    </div>
+    <div class="scaler-presets">
+      <button class="scaler-preset active" onclick="setScale('chili',1,this)" data-val="1">1× Original</button>
+      <button class="scaler-preset" onclick="setScale('chili',1.5,this)" data-val="1.5">1.5×</button>
+      <button class="scaler-preset" onclick="setScale('chili',2,this)" data-val="2">2× Double</button>
+      <button class="scaler-preset" onclick="setScale('chili',3,this)" data-val="3">3× Triple</button>
+    </div>
+  </div>
+
+  <div class="detail-body">    <!-- Ingredients -->
+    <div class="detail-ingredients">
+      <div class="detail-section-label">Meat</div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2.5 lbs</span><span>80/20 ground beef</span></div>
+      <div class="detail-section-label" style="margin-top:14px;">Aromatics</div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 large</span><span>white onion, small diced</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">5–6 cloves</span><span>garlic, pressed</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">drizzle</span><span>olive oil</span></div>
+      <div class="detail-section-label" style="margin-top:14px;">Tomatoes</div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 cans</span><span>diced tomatoes (14.5 oz each), drained</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 can</span><span>tomato sauce (15 oz)</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 can</span><span>fire-roasted tomatoes (28 oz)</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2</span><span>chipotle peppers in adobo</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">3 tbsp</span><span>tomato paste</span></div>
+      <div class="detail-section-label" style="margin-top:14px;">Spices & Sauce</div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">½ cup</span><span>chili powder</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">¼ cup</span><span>paprika</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1½ tbsp</span><span>ground cumin</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 tsp</span><span>chili flakes</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">4 tsp</span><span>hot sauce (Frank's)</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 tbsp</span><span>brown sugar</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 tbsp</span><span>Worcestershire sauce</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 tbsp</span><span>cider vinegar</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1½ tbsp</span><span>beef bouillon paste (Better Than Bouillon)</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 tsp</span><span>salt</span></div>
+      <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">4 cans</span><span>kidney beans (16 oz each), drained</span></div>
+    </div>
+
+    <!-- Instructions -->
+    <div class="detail-instructions">
+      <div class="detail-section-label">Instructions</div>
+      <div class="step"><div class="step-num">01</div><div class="step-text">Spread ground beef flat on a sheet tray and broil on high, 8" below the broiler, for 8–10 minutes until browned on top. Set aside to cool.</div></div>
+      <div class="step"><div class="step-num">02</div><div class="step-text">While beef broils: dice the onion, press the garlic, and drain the liquid from the diced tomatoes. Use an immersion blender to blend the fire-roasted tomatoes with the chipotle peppers until smooth.</div></div>
+      <div class="step"><div class="step-num">03</div><div class="step-text">Heat a drizzle of olive oil in a large pot over medium heat. Add the onion, garlic, and a pinch of salt. Sweat until softened, about 5 minutes.</div></div>
+      <div class="step"><div class="step-num">04</div><div class="step-text">Add chili powder, paprika, cumin, and chili flakes. Stir and toast the spices for 20–30 seconds.</div></div>
+      <div class="step"><div class="step-num">05</div><div class="step-text">Add the blended tomato mixture, tomato sauce, drained diced tomatoes, and tomato paste. Stir and scrape the bottom.</div></div>
+      <div class="step"><div class="step-num">06</div><div class="step-text">Add hot sauce, brown sugar, Worcestershire, cider vinegar, beef bouillon paste, and salt. Stir to combine and simmer 5 minutes.</div></div>
+      <div class="step"><div class="step-num">07</div><div class="step-text">Crumble the cooled beef into small pieces and add to the pot along with the drained kidney beans. Simmer at least 10 minutes. Add water or stock if too thick.</div></div>
+      <div class="step"><div class="step-num">08</div><div class="step-text">Taste and adjust seasoning with salt, vinegar, brown sugar, or hot sauce. Serve topped with diced onion, sour cream, shredded cheddar, and oyster crackers.</div></div>
+      <div class="tip-box"><strong>Key tip</strong>Broiling the beef on a sheet tray instead of browning it in the pot gives you better colour and saves time — don't skip it. The chipotle-blended tomato base is where most of the depth comes from.</div>
+    </div>
+
+    <!-- Grocery -->
+    <div class="detail-grocery" id="grocery-chili">
+      <div class="grocery-header">
+        <div class="grocery-title">Grocery List</div>
+        <div class="grocery-sub">Tap to check off as you shop</div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Meat</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Ground beef (80/20)</span><span class="gamount">2.5 lbs</span></div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Produce</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">White onion</span><span class="gamount">1 large</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Garlic</span><span class="gamount">5–6 cloves</span></div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Canned Goods</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Diced tomatoes</span><span class="gamount">2 cans</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Tomato sauce</span><span class="gamount">1 can</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Fire-roasted tomatoes</span><span class="gamount">1 can (28 oz)</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Chipotle peppers in adobo</span><span class="gamount">2 peppers</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Kidney beans</span><span class="gamount">4 cans</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Tomato paste</span><span class="gamount">3 tbsp</span></div>
+      </div>
+      <div class="grocery-section">
+        <div class="grocery-section-title">Pantry</div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Chili powder</span><span class="gamount">½ cup</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Paprika</span><span class="gamount">¼ cup</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Ground cumin</span><span class="gamount">1½ tbsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Chili flakes</span><span class="gamount">1 tsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Hot sauce (Frank's)</span><span class="gamount">4 tsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Brown sugar</span><span class="gamount">2 tbsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Worcestershire sauce</span><span class="gamount">2 tbsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Cider vinegar</span><span class="gamount">1 tbsp</span></div>
+        <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Beef bouillon paste</span><span class="gamount">1½ tbsp</span></div>
+      </div>
+      <div class="grocery-footer">
+        <button class="grocery-clear-btn" onclick="clearGrocery()">Clear All Checks</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Notes + Rating -->
+  <div class="detail-notes-section">
+    <div class="notes-block">
+      <div class="notes-label" style="display:flex;align-items:center;justify-content:space-between;">
+        My Notes
+        <span class="sync-indicator" style="font-size:10px;color:var(--green-mid);opacity:0;transition:opacity 0.4s;font-weight:500;">✓ Saved</span>
+      </div>
+      <textarea class="notes-textarea" placeholder="Add your notes after making it — tweaks, swaps, how it turned out…"></textarea>
+    </div>
+    <div class="rating-block">
+      <div class="notes-label">My Rating</div>
+      <div class="rating-row">
+        <span class="rating-name">Overall</span>
+        <div class="stars" data-group="overall4"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Taste</span>
+        <div class="stars" data-group="taste4"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Ease</span>
+        <div class="stars" data-group="ease4"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+      </div>
+      <div class="rating-row">
+        <span class="rating-name">Would Make Again?</span>
+        <div style="display:flex;gap:8px;">
+          <button onclick="toggleMakeAgain(this,'yes')" class="ma-yes-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">Yes</button>
+          <button onclick="toggleMakeAgain(this,'no')" class="ma-no-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-source">
+    Recipe by Brian Lagerstrom &nbsp;·&nbsp;
+    <a href="https://www.brianlagerstrom.com/recipes/30-minute-chili" target="_blank">brianlagerstrom.com</a>
+  </div>
+
+</div>
+</div><!-- end detail-view -->
+
+<script>
+
+// ── RECIPE GROCERY DATA ──
+var GROCERY_DATA = {
+  'mexican-rice': {
+    label: '🍚 Authentic Mexican Rice',
+    items: [
+      { name: 'Roma tomatoes', amount: '2' },
+      { name: 'Onion', amount: '¼' },
+      { name: 'Garlic', amount: '1 clove' },
+      { name: 'Cilantro', amount: '3 sprigs' },
+      { name: 'Jalapeño', amount: '1' },
+      { name: 'Extra long grain white rice', amount: '1½ cups' },
+      { name: 'Neutral oil', amount: '3 tbsp' },
+      { name: 'Knorr chicken bouillon', amount: '1 tbsp' },
+      { name: 'Garlic powder', amount: '½ tsp' },
+      { name: 'Salt', amount: '¼ tsp' }
+    ]
+  },
+  'levain-cookies': {
+    label: '🍪 Levain Bakery Cookies',
+    items: [
+      { name: 'Cold butter', amount: '1 cup' },
+      { name: 'Eggs', amount: '2' },
+      { name: 'Brown sugar', amount: '1 cup' },
+      { name: 'Sugar', amount: '½ cup' },
+      { name: 'Cake flour', amount: '1½ cups' },
+      { name: 'All-purpose flour', amount: '1½ cups' },
+      { name: 'Cornstarch', amount: '1 tsp' },
+      { name: 'Baking soda', amount: '¾ tsp' },
+      { name: 'Salt', amount: '¾ tsp' },
+      { name: 'Chocolate chips', amount: '2 cups' },
+      { name: 'Walnuts', amount: '2 cups' }
+    ]
+  },
+  'refried-beans': {
+    label: '🫘 Instant Pot Refried Beans',
+    items: [
+      { name: 'Onion', amount: '1 medium' },
+      { name: 'Garlic', amount: '4 cloves' },
+      { name: 'Jalapeño', amount: '1' },
+      { name: 'Dried pinto beans', amount: '8 oz' },
+      { name: 'Vegetable oil', amount: '¼ cup' },
+      { name: 'Fine sea salt', amount: '1½ tsp' },
+      { name: 'Baking soda', amount: '¼ tsp' },
+      { name: 'Bay leaf', amount: '1' }
+    ]
+  },
+  'chili': {
+    label: '🌶️ 30 Minute Chili',
+    items: [
+      { name: 'Ground beef (80/20)', amount: '2.5 lbs' },
+      { name: 'White onion', amount: '1 large' },
+      { name: 'Garlic', amount: '5–6 cloves' },
+      { name: 'Diced tomatoes (cans)', amount: '2 cans' },
+      { name: 'Tomato sauce', amount: '1 can' },
+      { name: 'Fire-roasted tomatoes', amount: '1 can (28 oz)' },
+      { name: 'Chipotle peppers in adobo', amount: '2 peppers' },
+      { name: 'Kidney beans', amount: '4 cans' },
+      { name: 'Tomato paste', amount: '3 tbsp' },
+      { name: 'Chili powder', amount: '½ cup' },
+      { name: 'Paprika', amount: '¼ cup' },
+      { name: 'Ground cumin', amount: '1½ tbsp' },
+      { name: 'Chili flakes', amount: '1 tsp' },
+      { name: 'Hot sauce (Frank\'s)', amount: '4 tsp' },
+      { name: 'Brown sugar', amount: '2 tbsp' },
+      { name: 'Worcestershire sauce', amount: '2 tbsp' },
+      { name: 'Cider vinegar', amount: '1 tbsp' },
+      { name: 'Beef bouillon paste', amount: '1½ tbsp' }
+    ]
+  }
+};
+
+var basketRecipes = [];
+var basketChecked = {};
+var basketRemoved = {}; // key: "recipeId-itemIndex" => true if removed
+var basketEditMode = false;
+
+function addToBasket() {
+  var picker = document.getElementById('recipe-picker');
+  var id = picker.value;
+  if (!id) { picker.focus(); return; }
+  if (basketRecipes.indexOf(id) !== -1) {
+    alert(GROCERY_DATA[id].label + ' is already in your basket!');
+    return;
+  }
+  basketRecipes.push(id);
+  picker.value = '';
+  renderBasket();
+}
+
+function removeFromBasket(id) {
+  basketRecipes = basketRecipes.filter(function(r) { return r !== id; });
+  Object.keys(basketChecked).forEach(function(k) {
+    if (k.indexOf(id + '-') === 0) delete basketChecked[k];
+  });
+  Object.keys(basketRemoved).forEach(function(k) {
+    if (k.indexOf(id + '-') === 0) delete basketRemoved[k];
+  });
+  renderBasket();
+}
+
+function removeBasketItem(key) {
+  basketRemoved[key] = true;
+  renderBasket();
+}
+
+function toggleBasketItem(key) {
+  if (basketEditMode) return;
+  basketChecked[key] = !basketChecked[key];
+  renderBasket();
+}
+
+function toggleEditMode() {
+  basketEditMode = !basketEditMode;
+  var btn = document.getElementById('edit-mode-btn');
+  btn.textContent = basketEditMode ? '✓ Done' : '✏️ Edit';
+  btn.classList.toggle('active', basketEditMode);
+  renderBasket();
+}
+
+function clearBasket() {
+  basketRecipes = [];
+  basketChecked = {};
+  basketRemoved = {};
+  basketEditMode = false;
+  var btn = document.getElementById('edit-mode-btn');
+  if (btn) { btn.textContent = '✏️ Edit'; btn.classList.remove('active'); }
+  renderBasket();
+}
+
+function renderBasket() {
+  var groups = document.getElementById('basket-groups');
+  var empty  = document.getElementById('basket-empty');
+  var footer = document.getElementById('basket-footer');
+  if (basketRecipes.length === 0) {
+    empty.style.display = '';
+    groups.innerHTML = '';
+    footer.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+  footer.style.display = '';
+  var totalItems = 0, checkedItems = 0, html = '';
+  basketRecipes.forEach(function(id) {
+    var data = GROCERY_DATA[id];
+    if (!data) return;
+    var visibleItems = data.items.filter(function(_, i) { return !basketRemoved[id + '-' + i]; });
+    if (visibleItems.length === 0 && !basketEditMode) return;
+    html += '<div class="basket-recipe-group">';
+    html += '<div class="basket-recipe-label">' + data.label +
+            ' <button class="basket-recipe-remove" onclick="removeFromBasket(\'' + id + '\')">Remove all</button></div>';
+    data.items.forEach(function(item, i) {
+      var key = id + '-' + i;
+      if (basketRemoved[key]) return;
+      var checked = !!basketChecked[key];
+      totalItems++;
+      if (checked) checkedItems++;
+      html += '<div class="basket-item' + (checked ? ' checked' : '') +
+              '" onclick="toggleBasketItem(\'' + key + '\')" style="' + (basketEditMode ? 'cursor:default;' : '') + '">' +
+              '<div class="basket-check" style="' + (basketEditMode ? 'opacity:0.3;pointer-events:none;' : '') + '"></div>' +
+              '<span class="basket-item-name">' + item.name + '</span>' +
+              '<span class="basket-item-amount"' + (basketEditMode ? ' style="display:none"' : '') + '>' + scaleGroceryAmount(item.amount, scaleFactors[id] || 1) + '</span>';
+      if (basketEditMode) {
+        html += '<button class="basket-item-remove" onclick="event.stopPropagation();removeBasketItem(\'' + key + '\')">×</button>';
+      }
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  groups.innerHTML = html;
+  document.getElementById('basket-progress').textContent = checkedItems + ' of ' + totalItems + ' items needed';
+}
+
+// ── CORAL/DESSERT THEME ──
+var DESSERT_TAGS = ['Dessert', 'Cookies', 'Baking'];
+function setTheme(id) {
+  var card = document.querySelector('.recipe-card[onclick*="' + id + '"]');
+  var tags = card ? (card.getAttribute('data-tags') || '') : '';
+  var isDesert = DESSERT_TAGS.some(function(t) { return tags.indexOf(t) !== -1; });
+  document.body.classList.toggle('dessert-mode', isDesert);
+}
+
+// ── RECIPE SCALER ──
+// Each ingredient: { num: numeric value, unit: unit string, label: ingredient name, fmt: optional format override }
+// fmt: 'frac' = show as fraction, 'whole' = round to whole, 'decimal' = show 1 decimal
+var RECIPE_INGREDIENTS = {
+  'mexican-rice': [
+    { num: 1.5,  unit: 'cups', label: 'extra long grain white rice' },
+    { num: 3,    unit: 'tbsp', label: 'neutral oil' },
+    { num: 0.25, unit: '',     label: 'onion, diced', fmt: 'frac' },
+    { num: 1,    unit: 'clove',label: 'garlic, crushed' },
+    { num: 1,    unit: 'tbsp', label: 'Knorr chicken bouillon' },
+    { num: 0.5,  unit: 'tsp',  label: 'garlic powder' },
+    { num: 2,    unit: '',     label: 'roma tomatoes (~8 oz)' },
+    { num: 2,    unit: 'cups', label: 'hot water' },
+    { num: 0.25, unit: 'tsp',  label: 'salt, to taste' },
+    { num: 3,    unit: 'sprigs',label: 'cilantro' },
+    { num: 1,    unit: '',     label: 'jalapeño' }
+  ],
+  'levain-cookies': [
+    { num: 1,    unit: 'cup',  label: 'cold butter, cut into small cubes' },
+    { num: 1,    unit: 'cup',  label: 'brown sugar' },
+    { num: 0.5,  unit: 'cup',  label: 'sugar' },
+    { num: 2,    unit: '',     label: 'eggs' },
+    { num: 1.5,  unit: 'cups', label: 'cake flour*' },
+    { num: 1.5,  unit: 'cups', label: 'all-purpose flour' },
+    { num: 1,    unit: 'tsp',  label: 'cornstarch' },
+    { num: 0.75, unit: 'tsp',  label: 'baking soda' },
+    { num: 0.75, unit: 'tsp',  label: 'salt' },
+    { num: 2,    unit: 'cups', label: 'chocolate chips' },
+    { num: 2,    unit: 'cups', label: 'walnuts, roughly chopped' }
+  ],
+  'refried-beans': [
+    { num: 8,    unit: 'oz',   label: 'dried pinto beans, sorted & rinsed', section: 'Beans' },
+    { num: 2,    unit: 'cloves',label: 'garlic, whole with skins on', section: 'Beans' },
+    { num: 0.5,  unit: 'tsp',  label: 'fine sea salt', section: 'Beans' },
+    { num: 0.25, unit: 'tsp',  label: 'baking soda', section: 'Beans' },
+    { num: 1,    unit: '',     label: 'bay leaf', section: 'Beans' },
+    { num: 3,    unit: 'cups', label: 'water', section: 'Beans' },
+    { num: 0.25, unit: 'cup',  label: 'vegetable oil', section: 'Aromatics' },
+    { num: 1,    unit: 'medium',label: 'onion, minced', section: 'Aromatics' },
+    { num: 2,    unit: 'cloves',label: 'garlic, smashed', section: 'Aromatics' },
+    { num: 1,    unit: '',     label: 'jalapeño, minced', section: 'Aromatics' },
+    { num: 1.5,  unit: 'tsp',  label: 'fine sea salt (total)', section: 'Aromatics' }
+  ],
+  'chili': [
+    { num: 2.5,  unit: 'lbs',  label: '80/20 ground beef', section: 'Meat' },
+    { num: 1,    unit: 'large',label: 'white onion, small diced', section: 'Aromatics' },
+    { num: 5.5,  unit: 'cloves',label: 'garlic, pressed', section: 'Aromatics' },
+    { num: 1,    unit: 'drizzle',label: 'olive oil', section: 'Aromatics', noScale: true },
+    { num: 2,    unit: 'cans', label: 'diced tomatoes (14.5 oz each), drained', section: 'Tomatoes' },
+    { num: 1,    unit: 'can',  label: 'tomato sauce (15 oz)', section: 'Tomatoes' },
+    { num: 1,    unit: 'can',  label: 'fire-roasted tomatoes (28 oz)', section: 'Tomatoes' },
+    { num: 2,    unit: '',     label: 'chipotle peppers in adobo', section: 'Tomatoes' },
+    { num: 3,    unit: 'tbsp', label: 'tomato paste', section: 'Tomatoes' },
+    { num: 0.5,  unit: 'cup',  label: 'chili powder', section: 'Spices & Sauce' },
+    { num: 0.25, unit: 'cup',  label: 'paprika', section: 'Spices & Sauce' },
+    { num: 1.5,  unit: 'tbsp', label: 'ground cumin', section: 'Spices & Sauce' },
+    { num: 1,    unit: 'tsp',  label: 'chili flakes', section: 'Spices & Sauce' },
+    { num: 4,    unit: 'tsp',  label: 'hot sauce (Frank\'s)', section: 'Spices & Sauce' },
+    { num: 2,    unit: 'tbsp', label: 'brown sugar', section: 'Spices & Sauce' },
+    { num: 2,    unit: 'tbsp', label: 'Worcestershire sauce', section: 'Spices & Sauce' },
+    { num: 1,    unit: 'tbsp', label: 'cider vinegar', section: 'Spices & Sauce' },
+    { num: 1.5,  unit: 'tbsp', label: 'beef bouillon paste', section: 'Spices & Sauce' },
+    { num: 2,    unit: 'tsp',  label: 'salt', section: 'Spices & Sauce' },
+    { num: 4,    unit: 'cans', label: 'kidney beans (16 oz each), drained', section: 'Spices & Sauce' }
+  ]
+};
+
+var scaleFactors = { 'mexican-rice': 1, 'levain-cookies': 1, 'refried-beans': 1, 'chili': 1 };
+
+function formatNum(n) {
+  // Express as nice fraction or decimal
+  if (n === Math.round(n)) return String(Math.round(n));
+  var fracs = [
+    [1,4,'¼'], [1,3,'⅓'], [1,2,'½'], [2,3,'⅔'], [3,4,'¾'],
+    [1,8,'⅛'], [3,8,'⅜'], [5,8,'⅝'], [7,8,'⅞']
+  ];
+  // Try whole + fraction
+  var whole = Math.floor(n);
+  var rem = n - whole;
+  var bestFrac = null;
+  var bestErr = 0.08;
+  for (var i = 0; i < fracs.length; i++) {
+    var val = fracs[i][0] / fracs[i][1];
+    if (Math.abs(rem - val) < bestErr) { bestErr = Math.abs(rem - val); bestFrac = fracs[i][2]; }
+  }
+  if (bestFrac) return (whole > 0 ? whole + ' ' : '') + bestFrac;
+  // fallback: 1 decimal
+  return n.toFixed(1).replace(/\.0$/, '');
+}
+
+function applyScale(recipeId, factor) {
+  var detail = document.getElementById('detail-' + recipeId);
+  if (!detail) return;
+  var ingrs = RECIPE_INGREDIENTS[recipeId];
+  if (!ingrs) return;
+
+  // Re-render ingredient list
+  var ingrContainer = detail.querySelector('.detail-ingredients');
+  if (ingrContainer) {
+    // Build new HTML — preserve section labels
+    var html = '';
+    var lastSection = null;
+    ingrs.forEach(function(ing) {
+      if (ing.section && ing.section !== lastSection) {
+        html += '<div class="detail-section-label"' + (lastSection ? ' style="margin-top:14px;"' : '') + '>' + ing.section + '</div>';
+        lastSection = ing.section;
+      } else if (!ing.section && lastSection === null && html === '') {
+        html += '<div class="detail-section-label">Ingredients</div>';
+        lastSection = 'default';
+      }
+      var scaledNum = ing.noScale ? ing.num : ing.num * factor;
+      var displayAmt = ing.noScale ? ing.unit : (formatNum(scaledNum) + (ing.unit ? ' ' + ing.unit : ''));
+      html += '<div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">' + displayAmt + '</span><span>' + ing.label + '</span></div>';
+    });
+    ingrContainer.innerHTML = html;
   }
 
-  // ── Save to Firebase ──
-  async function saveData(recipeId, data) {
-    try {
-      await setDoc(doc(db, "recipes", recipeId), data, { merge: true });
-    } catch (e) {
-      console.error("Save failed:", e);
+  // Scale the sidebar grocery list amounts
+  var groceryData = GROCERY_DATA[recipeId];
+  if (groceryData) {
+    var groceryContainer = detail.querySelector('.detail-grocery');
+    if (groceryContainer) {
+      var items = groceryContainer.querySelectorAll('.grocery-item');
+      items.forEach(function(item, idx) {
+        var baseItem = groceryData.items[idx];
+        if (!baseItem) return;
+        var amtEl = item.querySelector('.gamount');
+        if (!amtEl) return;
+        // Try to parse the base amount number
+        var scaled = scaleGroceryAmount(baseItem.amount, factor);
+        amtEl.textContent = scaled;
+      });
     }
   }
 
-  // ── Load from Firebase ──
-  async function loadData(recipeId) {
-    try {
-      const snap = await getDoc(doc(db, "recipes", recipeId));
-      return snap.exists() ? snap.data() : {};
-    } catch (e) {
-      console.error("Load failed:", e);
-      return {};
+  // Update the shopping basket if this recipe is in it
+  renderBasket();
+}
+
+function scaleGroceryAmount(amountStr, factor) {
+  if (factor === 1) return amountStr;
+  // Extract leading number (handles fractions like ½, ¼, 1½ etc)
+  var fracMap = {'¼':0.25,'½':0.5,'¾':0.75,'⅓':0.333,'⅔':0.667,'⅛':0.125,'⅜':0.375,'⅝':0.625,'⅞':0.875};
+  var str = amountStr.trim();
+  // Replace unicode fractions
+  var parsed = str;
+  Object.keys(fracMap).forEach(function(f) { parsed = parsed.replace(f, ' ' + fracMap[f]); });
+  // Extract number at start
+  var match = parsed.match(/^([\d.]+(?:\s+[\d.]+)?)/);
+  if (!match) return amountStr; // can't parse, return as-is
+  var numParts = match[1].trim().split(/\s+/).map(Number);
+  var baseNum = numParts.reduce(function(a, b) { return a + b; }, 0);
+  var suffix = amountStr.replace(/^[¼½¾⅓⅔⅛⅜⅝⅞\d\s.–-]+/, '').trim();
+  // Handle ranges like "5–6"
+  var rangeMatch = amountStr.match(/^([\d.]+)[–-]([\d.]+)\s*(.*)/);
+  if (rangeMatch) {
+    var lo = parseFloat(rangeMatch[1]) * factor;
+    var hi = parseFloat(rangeMatch[2]) * factor;
+    return formatNum(lo) + '–' + formatNum(hi) + (rangeMatch[3] ? ' ' + rangeMatch[3] : '');
+  }
+  var scaled = baseNum * factor;
+  return formatNum(scaled) + (suffix ? ' ' + suffix : '');
+}
+
+function adjustScale(recipeId, delta) {
+  var current = scaleFactors[recipeId] || 1;
+  var next = Math.round((current + delta) * 10) / 10;
+  if (next < 0.5) next = 0.5;
+  if (next > 5) next = 5;
+  setScale(recipeId, next, null);
+}
+
+function setScale(recipeId, factor, btn) {
+  scaleFactors[recipeId] = factor;
+  // Update display value
+  var valEl = document.getElementById('scaler-val-' + recipeId);
+  if (valEl) valEl.textContent = formatNum(factor) + '×';
+  // Update minus button disabled state
+  var minusBtn = document.getElementById('scaler-minus-' + recipeId);
+  if (minusBtn) minusBtn.disabled = factor <= 0.5;
+  // Update preset active states
+  var scalerBar = document.getElementById('scaler-' + recipeId);
+  if (scalerBar) {
+    scalerBar.querySelectorAll('.scaler-preset').forEach(function(b) {
+      b.classList.remove('active');
+      if (parseFloat(b.getAttribute('data-val')) === factor) b.classList.add('active');
+    });
+    if (btn) { btn.classList.add('active'); }
+  }
+  applyScale(recipeId, factor);
+}
+
+
+
+firebase.initializeApp({
+  apiKey: "AIzaSyBHgAxmYlFWa2T8HkxydccpPMCEQsZjotY",
+  authDomain: "recipe-database-215fa.firebaseapp.com",
+  projectId: "recipe-database-215fa",
+  storageBucket: "recipe-database-215fa.firebasestorage.app",
+  messagingSenderId: "584065977272",
+  appId: "1:584065977272:web:61eecdc84fea6e0c201d4d"
+});
+var db = firebase.firestore();
+var currentRecipe = null;
+var makeAgainValues = {};
+var saveTimer = null;
+
+// ── Nav ──
+function showHome() {
+  document.getElementById('home-view').classList.add('active');
+  document.getElementById('detail-view').classList.remove('active');
+  document.body.classList.remove('dessert-mode');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showDetail(id) {
+  document.getElementById('home-view').classList.remove('active');
+  document.getElementById('detail-view').classList.add('active');
+  document.getElementById('detail-mexican-rice').style.display = 'none';
+  document.getElementById('detail-levain-cookies').style.display = 'none';
+  document.getElementById('detail-refried-beans').style.display = 'none';
+  document.getElementById('detail-chili').style.display = 'none';
+  document.getElementById('detail-' + id).style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  currentRecipe = id;
+  setTheme(id);
+  doLoad(id);
+}
+
+// ── Filter ──
+function filterRecipes(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.recipe-card').forEach(function(card) {
+    card.style.display = (tag === 'all' || (card.dataset.tags || '').includes(tag)) ? '' : 'none';
+  });
+}
+
+// ── Save ──
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(function() { doSave(currentRecipe); }, 1000);
+}
+
+function doSave(id) {
+  var detail = document.getElementById('detail-' + id);
+  if (!detail) return;
+
+  var ta = detail.querySelector('.notes-textarea');
+  var notes = ta ? ta.value : '';
+
+  var ratings = {};
+  detail.querySelectorAll('.stars[data-group]').forEach(function(c) {
+    ratings[c.getAttribute('data-group')] = c.querySelectorAll('.star.lit').length;
+  });
+
+  var grocery = [];
+  detail.querySelectorAll('.grocery-item').forEach(function(el) {
+    grocery.push(el.classList.contains('checked'));
+  });
+
+  db.collection('recipes').doc(id).set({
+    notes: notes,
+    ratings: ratings,
+    grocery: grocery,
+    makeAgain: makeAgainValues[id] || null
+  }).then(function() {
+    var ind = detail.querySelector('.sync-indicator');
+    if (ind) { ind.style.opacity = '1'; setTimeout(function() { ind.style.opacity = '0'; }, 2000); }
+  });
+}
+
+// ── Load ──
+function doLoad(id) {
+  var detail = document.getElementById('detail-' + id);
+  if (!detail) return;
+
+  db.collection('recipes').doc(id).get().then(function(snap) {
+    if (!snap.exists) {
+      attachNoteListener(id);
+      return;
     }
-  }
+    var d = snap.data();
 
-  // ── Show sync indicator ──
-  function showSynced() {
-    const el = document.getElementById('sync-indicator');
-    if (!el) return;
-    el.textContent = '✓ Saved';
-    el.style.opacity = '1';
-    setTimeout(() => el.style.opacity = '0', 2000);
-  }
-
-  // ── Apply loaded data to UI ──
-  function applyData(data) {
     // Notes
-    if (data.notes) {
-      const ta = document.querySelector('.notes-textarea');
-      if (ta) ta.value = data.notes;
+    if (d.notes) {
+      var ta = detail.querySelector('.notes-textarea');
+      if (ta) ta.value = d.notes;
     }
 
-    // Star ratings
-    if (data.ratings) {
-      Object.entries(data.ratings).forEach(([group, val]) => {
-        const container = document.querySelector(`.stars[data-group="${group}"]`);
+    // Stars
+    if (d.ratings) {
+      Object.keys(d.ratings).forEach(function(group) {
+        var val = d.ratings[group];
+        var container = detail.querySelector('.stars[data-group="' + group + '"]');
         if (!container) return;
-        const stars = container.querySelectorAll('.star');
-        stars.forEach((s, i) => {
-          s.classList.remove('lit');
-          if (i < val) s.classList.add('lit');
+        container.querySelectorAll('.star').forEach(function(s, i) {
+          if (i < val) s.classList.add('lit'); else s.classList.remove('lit');
         });
       });
     }
 
-    // Make Again
-    if (data.makeAgain) {
-      applyMakeAgain(data.makeAgain);
-    }
-
-    // Grocery checks
-    if (data.grocery) {
-      const items = document.querySelectorAll('.grocery-item');
-      items.forEach((item, i) => {
-        if (data.grocery[i]) item.classList.add('checked');
+    // Grocery
+    if (d.grocery) {
+      var items = detail.querySelectorAll('.grocery-item');
+      items.forEach(function(el, i) {
+        if (d.grocery[i]) el.classList.add('checked'); else el.classList.remove('checked');
       });
     }
-  }
 
-  // ── Apply make again style ──
-  function applyMakeAgain(val) {
-    const yes = document.getElementById('ma-yes');
-    const no  = document.getElementById('ma-no');
-    if (!yes || !no) return;
-    [yes, no].forEach(b => { b.style.background=''; b.style.color='var(--text-mid)'; b.style.borderColor='var(--divider)'; });
-    if (val === 'yes') {
-      yes.style.background = 'var(--green-mid)'; yes.style.color = '#fff'; yes.style.borderColor = 'var(--green-mid)';
-    } else if (val === 'no') {
-      no.style.background = '#c0392b'; no.style.color = '#fff'; no.style.borderColor = '#c0392b';
+    // Make Again
+    if (d.makeAgain) {
+      makeAgainValues[id] = d.makeAgain;
+      applyMakeAgain(detail, d.makeAgain);
     }
-  }
 
-  // ── Collect current state ──
-  function collectData() {
-    const notes = document.querySelector('.notes-textarea')?.value || '';
-
-    const ratings = {};
-    document.querySelectorAll('.stars').forEach(container => {
-      const group = container.dataset.group;
-      const litStars = container.querySelectorAll('.star.lit');
-      if (group) ratings[group] = litStars.length;
-    });
-
-    const grocery = {};
-    document.querySelectorAll('.grocery-item').forEach((item, i) => {
-      grocery[i] = item.classList.contains('checked');
-    });
-
-    const makeAgain = document.getElementById('ma-yes')?.style.background.includes('green') ? 'yes'
-      : document.getElementById('ma-no')?.style.background.includes('rgb') ? 'no' : null;
-
-    return { notes, ratings, grocery, makeAgain };
-  }
-
-  const debouncedSave = debounce(() => {
-    saveData('mexican-rice', collectData()).then(showSynced);
-  }, 800);
-
-  // ── Init on detail view load ──
-  window.initFirebase = async function() {
-    const data = await loadData('mexican-rice');
-    applyData(data);
-
-    // Notes auto-save
-    const ta = document.querySelector('.notes-textarea');
-    if (ta) ta.addEventListener('input', debouncedSave);
-  };
-
-  // ── Exposed save trigger (called from UI interactions) ──
-  window.firebaseSave = debouncedSave;
-
-</script>
-
-<script>
-function showHome() {
-  document.getElementById('home-view').classList.add('active');
-  document.getElementById('detail-view').classList.remove('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-function showDetail(id) {
-  document.getElementById('home-view').classList.remove('active');
-  document.getElementById('detail-view').classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'instant' });
-  if (window.initFirebase) window.initFirebase();
-}
-function filterRecipes(tag, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.recipe-card').forEach(card => {
-    card.style.display = (tag === 'all' || (card.dataset.tags||'').includes(tag)) ? '' : 'none';
+    attachNoteListener(id);
   });
 }
-function toggleGrocery(el) {
-  el.classList.toggle('checked');
-  if (window.firebaseSave) window.firebaseSave();
+
+function attachNoteListener(id) {
+  var detail = document.getElementById('detail-' + id);
+  if (!detail) return;
+  var ta = detail.querySelector('.notes-textarea');
+  if (ta && !ta._fb) {
+    ta.addEventListener('input', scheduleSave);
+    ta._fb = true;
+  }
 }
+
+function applyMakeAgain(detail, val) {
+  var yes = detail.querySelector('.ma-yes-btn');
+  var no  = detail.querySelector('.ma-no-btn');
+  if (!yes || !no) return;
+  yes.style.background = ''; yes.style.color = 'var(--text-mid)'; yes.style.borderColor = '';
+  no.style.background  = ''; no.style.color  = 'var(--text-mid)'; no.style.borderColor  = '';
+  if (val === 'yes') { yes.style.background = 'var(--green-mid)'; yes.style.color = '#fff'; yes.style.borderColor = 'var(--green-mid)'; }
+  if (val === 'no')  { no.style.background  = '#c0392b';          no.style.color  = '#fff'; no.style.borderColor  = '#c0392b'; }
+}
+
+// ── Grocery ──
+function toggleGrocery(el) { el.classList.toggle('checked'); scheduleSave(); }
 function clearGrocery() {
-  document.querySelectorAll('.grocery-item.checked').forEach(el => el.classList.remove('checked'));
-  if (window.firebaseSave) window.firebaseSave();
+  var detail = document.getElementById('detail-' + currentRecipe);
+  if (detail) detail.querySelectorAll('.grocery-item.checked').forEach(function(el) { el.classList.remove('checked'); });
+  scheduleSave();
 }
+
+// ── Stars ──
 function rate(star) {
-  const container = star.closest('.stars');
-  const stars = container.querySelectorAll('.star');
-  const idx = Array.from(stars).indexOf(star);
-  stars.forEach((s, i) => {
-    s.classList.remove('lit');
-    if (i <= idx) s.classList.add('lit');
-  });
-  if (window.firebaseSave) window.firebaseSave();
+  var container = star.closest('.stars');
+  var stars = container.querySelectorAll('.star');
+  var idx = Array.from(stars).indexOf(star);
+  stars.forEach(function(s, i) { if (i <= idx) s.classList.add('lit'); else s.classList.remove('lit'); });
+  scheduleSave();
 }
+
+// ── Make Again ──
 function toggleMakeAgain(btn, val) {
-  const yes = document.getElementById('ma-yes');
-  const no  = document.getElementById('ma-no');
-  [yes, no].forEach(b => { b.style.background=''; b.style.color='var(--text-mid)'; b.style.borderColor='var(--divider)'; });
-  if (val === 'yes') {
-    yes.style.background = 'var(--green-mid)'; yes.style.color = '#fff'; yes.style.borderColor = 'var(--green-mid)';
-  } else {
-    no.style.background = '#c0392b'; no.style.color = '#fff'; no.style.borderColor = '#c0392b';
-  }
-  if (window.firebaseSave) window.firebaseSave();
+  makeAgainValues[currentRecipe] = val;
+  var detail = document.getElementById('detail-' + currentRecipe);
+  if (detail) applyMakeAgain(detail, val);
+  scheduleSave();
 }
 </script>
 </body>
