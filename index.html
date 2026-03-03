@@ -26,11 +26,12 @@
 
 /* ─── RESET ───────────────────────────────────────────── */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 17px; }
 
 body {
   background: var(--green-mist);
   font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
   color: var(--text-dark);
   min-height: 100vh;
   overflow-x: hidden;
@@ -998,7 +999,10 @@ nav {
         const container = document.querySelector(`.stars[data-group="${group}"]`);
         if (!container) return;
         const stars = container.querySelectorAll('.star');
-        stars.forEach((s, i) => s.classList.toggle('lit', i < val));
+        stars.forEach((s, i) => {
+          s.classList.remove('lit');
+          if (i < val) s.classList.add('lit');
+        });
       });
     }
 
@@ -1036,8 +1040,8 @@ nav {
     const ratings = {};
     document.querySelectorAll('.stars').forEach(container => {
       const group = container.dataset.group;
-      const lit = container.querySelectorAll('.star.lit').length;
-      if (group) ratings[group] = lit;
+      const litStars = container.querySelectorAll('.star.lit');
+      if (group) ratings[group] = litStars.length;
     });
 
     const grocery = {};
@@ -1098,9 +1102,13 @@ function clearGrocery() {
   if (window.firebaseSave) window.firebaseSave();
 }
 function rate(star) {
-  const stars = star.closest('.stars').querySelectorAll('.star');
+  const container = star.closest('.stars');
+  const stars = container.querySelectorAll('.star');
   const idx = Array.from(stars).indexOf(star);
-  stars.forEach((s, i) => s.classList.toggle('lit', i <= idx));
+  stars.forEach((s, i) => {
+    s.classList.remove('lit');
+    if (i <= idx) s.classList.add('lit');
+  });
   if (window.firebaseSave) window.firebaseSave();
 }
 function toggleMakeAgain(btn, val) {
