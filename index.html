@@ -1019,7 +1019,7 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
     Our Recipe Database
   </div>
   <div class="nav-right">
-    <span class="nav-count" id="recipe-count">4 Recipes</span>
+    <span class="nav-count" id="recipe-count">5 Recipes</span>
     <button class="nav-add-btn" onclick="alert('To add a recipe, ask Claude to generate one and add it to this file!')">+ Add Recipe</button>
   </div>
 </nav>
@@ -1047,6 +1047,7 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
     <button class="filter-btn" onclick="filterRecipes('Cookies', this)">Cookies</button>
     <button class="filter-btn" onclick="filterRecipes('Instant Pot', this)">Instant Pot</button>
     <button class="filter-btn" onclick="filterRecipes('Beef', this)">Beef</button>
+    <button class="filter-btn" onclick="filterRecipes('Braise', this)">Braise</button>
   </div>
 
   <div class="grid-section">
@@ -1165,6 +1166,34 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
         </div>
       </div>
 
+      <!-- CARD: Carne Guisada -->
+      <div class="recipe-card" data-tags="Dinner,Mexican,Beef,Braise" onclick="showDetail('carne-guisada')">
+        <div class="card-thumb" style="background: linear-gradient(135deg, #F2EBE0 0%, #8B4A2222 100%);">
+          <span class="card-thumb-icon">🥩</span>
+          <span class="card-badge">Braise</span>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="card-tag">Dinner</span>
+            <span class="card-tag">Mexican</span>
+            <span class="card-tag">Beef</span>
+          </div>
+          <div class="card-title">Carne Guisada</div>
+          <div class="card-subtitle">Ethan Chlebowski</div>
+          <div class="card-meta">
+            <div class="card-meta-item">
+              <span class="card-meta-label">Total</span>
+              <span class="card-meta-value">4.5 hrs</span>
+            </div>
+            <div class="card-meta-item">
+              <span class="card-meta-label">Serves</span>
+              <span class="card-meta-value">8</span>
+            </div>
+            <div class="card-arrow">→</div>
+          </div>
+        </div>
+      </div>
+
       <!-- EMPTY SLOT -->
       <div class="empty-slot" onclick="alert('Ask Claude to add your next recipe!')">
         <div class="empty-slot-icon">+</div>
@@ -1189,6 +1218,7 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
             <option value="levain-cookies">🍪 Levain Bakery Cookies</option>
             <option value="refried-beans">🫘 Instant Pot Refried Beans</option>
             <option value="chili">🌶️ 30 Minute Chili</option>
+            <option value="carne-guisada">🥩 Carne Guisada</option>
           </select>
           <button class="add-to-basket-btn" onclick="addToBasket()">+ Add to Basket</button>
           <button class="edit-mode-btn" id="edit-mode-btn" onclick="toggleEditMode()">✏️ Edit</button>
@@ -1833,8 +1863,175 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
   </div>
 
 </div>
+
+  <!-- ════ DETAIL: CARNE GUISADA ════ -->
+  <div id="detail-carne-guisada" style="display:none;">
+
+    <div class="detail-back" onclick="showHome()">
+      <span>←</span> Back to Our Recipe Database
+    </div>
+
+    <div class="detail-header">
+      <div class="detail-tag-row">
+        <span class="detail-tag">Dinner</span>
+        <span class="detail-tag">Mexican</span>
+        <span class="detail-tag">Beef</span>
+        <span class="detail-tag">Braise</span>
+      </div>
+      <div class="detail-title">Carne Guisada</div>
+      <div class="detail-subtitle">A deeply flavored braise — Texas & Mexico style</div>
+    </div>
+
+    <div class="detail-meta-strip">
+      <div class="detail-meta-item">
+        <div class="detail-meta-label">Prep</div>
+        <div class="detail-meta-value">30<span class="detail-meta-unit"> min</span></div>
+      </div>
+      <div class="detail-meta-item">
+        <div class="detail-meta-label">Braise</div>
+        <div class="detail-meta-value">3–4<span class="detail-meta-unit"> hrs</span></div>
+      </div>
+      <div class="detail-meta-item">
+        <div class="detail-meta-label">Total</div>
+        <div class="detail-meta-value">4.5<span class="detail-meta-unit"> hrs</span></div>
+      </div>
+      <div class="detail-meta-item">
+        <div class="detail-meta-label">Serves</div>
+        <div class="detail-meta-value">8</div>
+      </div>
+    </div>
+
+    <div class="scaler-bar" id="scaler-carne-guisada">
+      <span class="scaler-label">Scale Recipe</span>
+      <div class="scaler-controls">
+        <button class="scaler-btn" onclick="adjustScale('carne-guisada',-0.5)" id="scaler-minus-carne-guisada">−</button>
+        <span class="scaler-value" id="scaler-val-carne-guisada">1×</span>
+        <button class="scaler-btn" onclick="adjustScale('carne-guisada',0.5)">+</button>
+      </div>
+      <div class="scaler-presets">
+        <button class="scaler-preset active" onclick="setScale('carne-guisada',1,this)" data-val="1">1× Original</button>
+        <button class="scaler-preset" onclick="setScale('carne-guisada',1.5,this)" data-val="1.5">1.5×</button>
+        <button class="scaler-preset" onclick="setScale('carne-guisada',2,this)" data-val="2">2× Double</button>
+        <button class="scaler-preset" onclick="setScale('carne-guisada',3,this)" data-val="3">3× Triple</button>
+      </div>
+    </div>
+
+    <div class="detail-body">
+
+      <!-- Ingredients -->
+      <div class="detail-ingredients">
+        <div class="detail-section-label">Braising Cut</div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 lbs</span><span>chuck roast, cubed</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">2 lbs</span><span>beef cheeks, cubed</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">~1 tbsp</span><span>salt (for seasoning)</span></div>
+        <div class="detail-section-label" style="margin-top:14px;">Aromatic Base & Spices</div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">drizzle</span><span>neutral oil</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">½</span><span>onion, diced</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1</span><span>green bell pepper, diced</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1–2</span><span>poblano peppers, diced</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 tsp</span><span>cumin</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 tsp</span><span>chili powder</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 tsp</span><span>smoked paprika</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">½ tsp</span><span>fresh oregano</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1</span><span>bay leaf</span></div>
+        <div class="detail-section-label" style="margin-top:14px;">Braising Liquid</div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">~3 cups</span><span>beef broth (enough to submerge)</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">1 can</span><span>diced tomatoes (small)</span></div>
+        <div class="ingr-item"><div class="ingr-dot"></div><span class="ingr-amount">as needed</span><span>cornstarch slurry (to thicken)</span></div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="detail-instructions">
+        <div class="detail-section-label">Instructions</div>
+        <div class="step"><div class="step-num">01</div><div class="step-text">Preheat oven to 300°F / 150°C. Add a drizzle of neutral oil to a Dutch oven over medium heat. Sauté the onion, bell pepper, and poblano until soft and translucent. Add the cumin, chili powder, smoked paprika, and oregano and bloom the spices for 30 seconds. Remove the aromatic base and set aside.</div></div>
+        <div class="step"><div class="step-num">02</div><div class="step-text">Increase heat to medium-high. Trim any excess fat from the beef cheeks. Add all the cubed meat to the pot and season evenly with salt. Sear until browned — work in batches if you want deeper color and flavor.</div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-text">Return the aromatic base to the pot. Add the diced tomatoes and enough beef broth to just barely submerge the meat. Tuck in the bay leaf.</div></div>
+        <div class="step"><div class="step-num">04</div><div class="step-text">Cover and braise in the oven for 1 hour. Remove the lid to encourage browning and evaporation. Continue braising uncovered for another 2–3 hours, until the meat is completely tender and the liquid has reduced to a rich sauce.</div></div>
+        <div class="step"><div class="step-num">05</div><div class="step-text">Return the pot to the stovetop. If the sauce needs thickening, bring to a simmer and stir in a cornstarch slurry a little at a time until you hit your desired consistency. Taste and adjust seasoning.</div></div>
+        <div class="step"><div class="step-num">06</div><div class="step-text">Serve with Mexican rice, refried beans, warm flour tortillas, queso fresco, and sliced avocado. Leftovers are incredible in quesadillas, tacos, and tortas.</div></div>
+        <div class="tip-box"><strong>Tips</strong>Using half chuck roast and half beef cheeks gives extra richness — but all chuck works great too. The longer the braise, the better. Don't rush step 4. For extra depth, sear the meat in small batches so each cube gets proper contact with the pan.</div>
+      </div>
+
+      <!-- Grocery -->
+      <div class="detail-grocery" id="grocery-carne-guisada">
+        <div class="grocery-header">
+          <div class="grocery-title">Grocery List</div>
+          <div class="grocery-sub">Tap to check off as you shop</div>
+        </div>
+        <div class="grocery-section">
+          <div class="grocery-section-title">Meat</div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Chuck roast</span><span class="gamount">2 lbs</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Beef cheeks</span><span class="gamount">2 lbs</span></div>
+        </div>
+        <div class="grocery-section">
+          <div class="grocery-section-title">Produce</div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Onion</span><span class="gamount">½</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Green bell pepper</span><span class="gamount">1</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Poblano peppers</span><span class="gamount">1–2</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Fresh oregano</span><span class="gamount">½ tsp</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Avocados</span><span class="gamount">for serving</span></div>
+        </div>
+        <div class="grocery-section">
+          <div class="grocery-section-title">Pantry & Fridge</div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Beef broth</span><span class="gamount">~3 cups</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Diced tomatoes (can)</span><span class="gamount">1 small</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Cumin</span><span class="gamount">1 tsp</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Chili powder</span><span class="gamount">1 tsp</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Smoked paprika</span><span class="gamount">1 tsp</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Queso fresco</span><span class="gamount">for serving</span></div>
+          <div class="grocery-item" onclick="toggleGrocery(this)"><div class="gcheck"></div><span class="gname">Flour tortillas</span><span class="gamount">for serving</span></div>
+        </div>
+        <div class="grocery-footer">
+          <button class="grocery-clear-btn" onclick="clearGrocery()">Clear All Checks</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Notes + Rating -->
+    <div class="detail-notes-section">
+      <div class="notes-block">
+        <div class="notes-label" style="display:flex;align-items:center;justify-content:space-between;">
+          My Notes
+          <span class="sync-indicator" style="font-size:10px;color:var(--green-mid);opacity:0;transition:opacity 0.4s;font-weight:500;">✓ Saved</span>
+        </div>
+        <textarea class="notes-textarea" placeholder="Add your notes after making it — tweaks, swaps, how it turned out…"></textarea>
+      </div>
+      <div class="rating-block">
+        <div class="notes-label">My Rating</div>
+        <div class="rating-row">
+          <span class="rating-name">Overall</span>
+          <div class="stars" data-group="overall5"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+        </div>
+        <div class="rating-row">
+          <span class="rating-name">Taste</span>
+          <div class="stars" data-group="taste5"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+        </div>
+        <div class="rating-row">
+          <span class="rating-name">Ease</span>
+          <div class="stars" data-group="ease5"><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span><span class="star" onclick="rate(this)">★</span></div>
+        </div>
+        <div class="rating-row">
+          <span class="rating-name">Would Make Again?</span>
+          <div style="display:flex;gap:8px;">
+            <button onclick="toggleMakeAgain(this,'yes')" class="ma-yes-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">Yes</button>
+            <button onclick="toggleMakeAgain(this,'no')" class="ma-no-btn" style="padding:6px 16px;border-radius:8px;border:1.5px solid var(--divider);background:transparent;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;color:var(--text-mid);transition:all 0.2s;">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-source">
+      Recipe by Ethan Chlebowski &nbsp;·&nbsp;
+      <a href="https://www.cookwell.com/recipe/carne-guisada-ethan" target="_blank">cookwell.com</a>
+    </div>
+
+  </div>
+
 </div><!-- end detail-view -->
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 
 // ── RECIPE GROCERY DATA ──
@@ -1904,6 +2101,25 @@ var GROCERY_DATA = {
       { name: 'Worcestershire sauce', amount: '2 tbsp' },
       { name: 'Cider vinegar', amount: '1 tbsp' },
       { name: 'Beef bouillon paste', amount: '1½ tbsp' }
+    ]
+  },
+  'carne-guisada': {
+    label: '🥩 Carne Guisada',
+    items: [
+      { name: 'Chuck roast', amount: '2 lbs' },
+      { name: 'Beef cheeks', amount: '2 lbs' },
+      { name: 'Onion', amount: '½' },
+      { name: 'Green bell pepper', amount: '1' },
+      { name: 'Poblano peppers', amount: '1–2' },
+      { name: 'Fresh oregano', amount: '½ tsp' },
+      { name: 'Beef broth', amount: '~3 cups' },
+      { name: 'Diced tomatoes (can)', amount: '1 small' },
+      { name: 'Cumin', amount: '1 tsp' },
+      { name: 'Chili powder', amount: '1 tsp' },
+      { name: 'Smoked paprika', amount: '1 tsp' },
+      { name: 'Queso fresco', amount: 'for serving' },
+      { name: 'Flour tortillas', amount: 'for serving' },
+      { name: 'Avocados', amount: 'for serving' }
     ]
   }
 };
@@ -2082,10 +2298,27 @@ var RECIPE_INGREDIENTS = {
     { num: 1.5,  unit: 'tbsp', label: 'beef bouillon paste', section: 'Spices & Sauce' },
     { num: 2,    unit: 'tsp',  label: 'salt', section: 'Spices & Sauce' },
     { num: 4,    unit: 'cans', label: 'kidney beans (16 oz each), drained', section: 'Spices & Sauce' }
+  ],
+  'carne-guisada': [
+    { num: 2,    unit: 'lbs',  label: 'chuck roast, cubed', section: 'Braising Cut' },
+    { num: 2,    unit: 'lbs',  label: 'beef cheeks, cubed', section: 'Braising Cut' },
+    { num: 1,    unit: 'tbsp', label: 'salt (for seasoning)', section: 'Braising Cut' },
+    { num: 1,    unit: 'drizzle', label: 'neutral oil', section: 'Aromatic Base & Spices', noScale: true },
+    { num: 0.5,  unit: '',     label: 'onion, diced', section: 'Aromatic Base & Spices' },
+    { num: 1,    unit: '',     label: 'green bell pepper, diced', section: 'Aromatic Base & Spices' },
+    { num: 1.5,  unit: '',     label: 'poblano peppers, diced', section: 'Aromatic Base & Spices' },
+    { num: 1,    unit: 'tsp',  label: 'cumin', section: 'Aromatic Base & Spices' },
+    { num: 1,    unit: 'tsp',  label: 'chili powder', section: 'Aromatic Base & Spices' },
+    { num: 1,    unit: 'tsp',  label: 'smoked paprika', section: 'Aromatic Base & Spices' },
+    { num: 0.5,  unit: 'tsp',  label: 'fresh oregano', section: 'Aromatic Base & Spices' },
+    { num: 1,    unit: '',     label: 'bay leaf', section: 'Aromatic Base & Spices' },
+    { num: 3,    unit: 'cups', label: 'beef broth (enough to submerge)', section: 'Braising Liquid' },
+    { num: 1,    unit: 'can',  label: 'diced tomatoes (small)', section: 'Braising Liquid' },
+    { num: 1,    unit: 'tbsp', label: 'cornstarch slurry (as needed)', section: 'Braising Liquid', noScale: true }
   ]
 };
 
-var scaleFactors = { 'mexican-rice': 1, 'levain-cookies': 1, 'refried-beans': 1, 'chili': 1 };
+var scaleFactors = { 'mexican-rice': 1, 'levain-cookies': 1, 'refried-beans': 1, 'chili': 1, 'carne-guisada': 1 };
 
 function formatNum(n) {
   // Express as nice fraction or decimal
@@ -2220,7 +2453,18 @@ firebase.initializeApp({
   messagingSenderId: "584065977272",
   appId: "1:584065977272:web:61eecdc84fea6e0c201d4d"
 });
+
 var db = firebase.firestore();
+
+// Enable offline persistence so it works without internet
+db.enablePersistence({ synchronizeTabs: true }).catch(function(err) {
+  if (err.code === 'failed-precondition') {
+    console.warn('Firebase persistence unavailable: multiple tabs open');
+  } else if (err.code === 'unimplemented') {
+    console.warn('Firebase persistence not supported in this browser');
+  }
+});
+
 var currentRecipe = null;
 var makeAgainValues = {};
 var saveTimer = null;
@@ -2240,6 +2484,7 @@ function showDetail(id) {
   document.getElementById('detail-levain-cookies').style.display = 'none';
   document.getElementById('detail-refried-beans').style.display = 'none';
   document.getElementById('detail-chili').style.display = 'none';
+  document.getElementById('detail-carne-guisada').style.display = 'none';
   document.getElementById('detail-' + id).style.display = 'block';
   window.scrollTo({ top: 0, behavior: 'instant' });
   currentRecipe = id;
@@ -2262,7 +2507,22 @@ function scheduleSave() {
   saveTimer = setTimeout(function() { doSave(currentRecipe); }, 1000);
 }
 
+function showSyncStatus(detail, success) {
+  var ind = detail.querySelector('.sync-indicator');
+  if (!ind) return;
+  if (success) {
+    ind.textContent = '✓ Saved';
+    ind.style.color = '';
+  } else {
+    ind.textContent = '⚠ Save failed';
+    ind.style.color = '#E07070';
+  }
+  ind.style.opacity = '1';
+  setTimeout(function() { ind.style.opacity = '0'; }, 2500);
+}
+
 function doSave(id) {
+  if (!id) return;
   var detail = document.getElementById('detail-' + id);
   if (!detail) return;
 
@@ -2283,19 +2543,30 @@ function doSave(id) {
     notes: notes,
     ratings: ratings,
     grocery: grocery,
-    makeAgain: makeAgainValues[id] || null
+    makeAgain: makeAgainValues[id] || null,
+    scale: scaleFactors[id] || 1,
+    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
   }).then(function() {
-    var ind = detail.querySelector('.sync-indicator');
-    if (ind) { ind.style.opacity = '1'; setTimeout(function() { ind.style.opacity = '0'; }, 2000); }
+    showSyncStatus(detail, true);
+  }).catch(function(err) {
+    console.error('Save failed:', err);
+    showSyncStatus(detail, false);
   });
 }
 
 // ── Load ──
 function doLoad(id) {
+  if (!id) return;
   var detail = document.getElementById('detail-' + id);
   if (!detail) return;
 
+  // Show loading state
+  var ind = detail.querySelector('.sync-indicator');
+  if (ind) { ind.textContent = '↻ Loading…'; ind.style.opacity = '1'; ind.style.color = ''; }
+
   db.collection('recipes').doc(id).get().then(function(snap) {
+    if (ind) ind.style.opacity = '0';
+
     if (!snap.exists) {
       attachNoteListener(id);
       return;
@@ -2303,10 +2574,8 @@ function doLoad(id) {
     var d = snap.data();
 
     // Notes
-    if (d.notes) {
-      var ta = detail.querySelector('.notes-textarea');
-      if (ta) ta.value = d.notes;
-    }
+    var ta = detail.querySelector('.notes-textarea');
+    if (ta && d.notes) ta.value = d.notes;
 
     // Stars
     if (d.ratings) {
@@ -2334,6 +2603,15 @@ function doLoad(id) {
       applyMakeAgain(detail, d.makeAgain);
     }
 
+    // Scale factor
+    if (d.scale && d.scale !== 1) {
+      setScale(id, d.scale, null);
+    }
+
+    attachNoteListener(id);
+  }).catch(function(err) {
+    console.error('Load failed:', err);
+    if (ind) { ind.textContent = '⚠ Load failed'; ind.style.color = '#E07070'; ind.style.opacity = '1'; setTimeout(function() { ind.style.opacity = '0'; }, 3000); }
     attachNoteListener(id);
   });
 }
