@@ -511,7 +511,27 @@ nav {
   font-size: 13px;
   font-weight: 300;
   color: var(--text-soft);
-  margin-bottom: 16px;
+  margin-bottom: 6px;
+}
+
+.card-author {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--green-mid);
+  margin-bottom: 14px;
+}
+.card-author::before {
+  content: '';
+  display: inline-block;
+  width: 14px; height: 14px;
+  background: var(--green-bright);
+  border-radius: 50%;
+  opacity: 0.18;
+  flex-shrink: 0;
 }
 
 .card-meta {
@@ -1068,6 +1088,7 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
           </div>
           <div class="card-title">Authentic Mexican Rice</div>
           <div class="card-subtitle">Arroz Rojo</div>
+          <div class="card-author">Stella Navarro-Kim</div>
           <div class="card-meta">
             <div class="card-meta-item">
               <span class="card-meta-label">Total</span>
@@ -1096,6 +1117,7 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
           </div>
           <div class="card-title">Levain Bakery Chocolate Chip Cookies</div>
           <div class="card-subtitle">Thick & gooey copycat</div>
+          <div class="card-author">Melissa Stadler · Modern Honey</div>
           <div class="card-meta">
             <div class="card-meta-item">
               <span class="card-meta-label">Total</span>
@@ -1124,6 +1146,7 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
           </div>
           <div class="card-title">Instant Pot Refried Beans</div>
           <div class="card-subtitle">From scratch in about an hour</div>
+          <div class="card-author">Mike Vrobel · Dad Cooks Dinner</div>
           <div class="card-meta">
             <div class="card-meta-item">
               <span class="card-meta-label">Total</span>
@@ -1151,7 +1174,8 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
             <span class="card-tag">Comfort Food</span>
           </div>
           <div class="card-title">30 Minute Chili</div>
-          <div class="card-subtitle">Brian Lagerstrom</div>
+          <div class="card-subtitle">Quick weeknight comfort food</div>
+          <div class="card-author">Brian Lagerstrom</div>
           <div class="card-meta">
             <div class="card-meta-item">
               <span class="card-meta-label">Total</span>
@@ -1179,7 +1203,8 @@ body.dessert-mode .scaler-preset.active { background: #7A5248; border-color: #7A
             <span class="card-tag">Beef</span>
           </div>
           <div class="card-title">Carne Guisada</div>
-          <div class="card-subtitle">Ethan Chlebowski</div>
+          <div class="card-subtitle">A deeply flavored Texas braise</div>
+          <div class="card-author">Ethan Chlebowski · CookWell</div>
           <div class="card-meta">
             <div class="card-meta-item">
               <span class="card-meta-label">Total</span>
