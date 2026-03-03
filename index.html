@@ -894,7 +894,10 @@ nav {
     <!-- Notes + Rating -->
     <div class="detail-notes-section">
       <div class="notes-block">
-        <div class="notes-label">My Notes</div>
+        <div class="notes-label" style="display:flex;align-items:center;justify-content:space-between;">
+          My Notes
+          <span id="sync-indicator" style="font-size:10px;color:var(--green-mid);opacity:0;transition:opacity 0.4s;font-weight:500;">✓ Saved</span>
+        </div>
         <textarea class="notes-textarea" placeholder="Add your notes after making it — tweaks, swaps, how it turned out…"></textarea>
       </div>
       <div class="rating-block">
@@ -929,6 +932,144 @@ nav {
   </div>
 </div>
 
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBHgAxmYlFWa2T8HkxydccpPMCEQsZjotY",
+    authDomain: "recipe-database-215fa.firebaseapp.com",
+    projectId: "recipe-database-215fa",
+    storageBucket: "recipe-database-215fa.firebasestorage.app",
+    messagingSenderId: "584065977272",
+    appId: "1:584065977272:web:61eecdc84fea6e0c201d4d"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // ── Debounce helper ──
+  function debounce(fn, delay) {
+    let timer;
+    return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), delay); };
+  }
+
+  // ── Save to Firebase ──
+  async function saveData(recipeId, data) {
+    try {
+      await setDoc(doc(db, "recipes", recipeId), data, { merge: true });
+    } catch (e) {
+      console.error("Save failed:", e);
+    }
+  }
+
+  // ── Load from Firebase ──
+  async function loadData(recipeId) {
+    try {
+      const snap = await getDoc(doc(db, "recipes", recipeId));
+      return snap.exists() ? snap.data() : {};
+    } catch (e) {
+      console.error("Load failed:", e);
+      return {};
+    }
+  }
+
+  // ── Show sync indicator ──
+  function showSynced() {
+    const el = document.getElementById('sync-indicator');
+    if (!el) return;
+    el.textContent = '✓ Saved';
+    el.style.opacity = '1';
+    setTimeout(() => el.style.opacity = '0', 2000);
+  }
+
+  // ── Apply loaded data to UI ──
+  function applyData(data) {
+    // Notes
+    if (data.notes) {
+      const ta = document.querySelector('.notes-textarea');
+      if (ta) ta.value = data.notes;
+    }
+
+    // Star ratings
+    if (data.ratings) {
+      Object.entries(data.ratings).forEach(([group, val]) => {
+        const container = document.querySelector(`.stars[data-group="${group}"]`);
+        if (!container) return;
+        const stars = container.querySelectorAll('.star');
+        stars.forEach((s, i) => s.classList.toggle('lit', i < val));
+      });
+    }
+
+    // Make Again
+    if (data.makeAgain) {
+      applyMakeAgain(data.makeAgain);
+    }
+
+    // Grocery checks
+    if (data.grocery) {
+      const items = document.querySelectorAll('.grocery-item');
+      items.forEach((item, i) => {
+        if (data.grocery[i]) item.classList.add('checked');
+      });
+    }
+  }
+
+  // ── Apply make again style ──
+  function applyMakeAgain(val) {
+    const yes = document.getElementById('ma-yes');
+    const no  = document.getElementById('ma-no');
+    if (!yes || !no) return;
+    [yes, no].forEach(b => { b.style.background=''; b.style.color='var(--text-mid)'; b.style.borderColor='var(--divider)'; });
+    if (val === 'yes') {
+      yes.style.background = 'var(--green-mid)'; yes.style.color = '#fff'; yes.style.borderColor = 'var(--green-mid)';
+    } else if (val === 'no') {
+      no.style.background = '#c0392b'; no.style.color = '#fff'; no.style.borderColor = '#c0392b';
+    }
+  }
+
+  // ── Collect current state ──
+  function collectData() {
+    const notes = document.querySelector('.notes-textarea')?.value || '';
+
+    const ratings = {};
+    document.querySelectorAll('.stars').forEach(container => {
+      const group = container.dataset.group;
+      const lit = container.querySelectorAll('.star.lit').length;
+      if (group) ratings[group] = lit;
+    });
+
+    const grocery = {};
+    document.querySelectorAll('.grocery-item').forEach((item, i) => {
+      grocery[i] = item.classList.contains('checked');
+    });
+
+    const makeAgain = document.getElementById('ma-yes')?.style.background.includes('green') ? 'yes'
+      : document.getElementById('ma-no')?.style.background.includes('rgb') ? 'no' : null;
+
+    return { notes, ratings, grocery, makeAgain };
+  }
+
+  const debouncedSave = debounce(() => {
+    saveData('mexican-rice', collectData()).then(showSynced);
+  }, 800);
+
+  // ── Init on detail view load ──
+  window.initFirebase = async function() {
+    const data = await loadData('mexican-rice');
+    applyData(data);
+
+    // Notes auto-save
+    const ta = document.querySelector('.notes-textarea');
+    if (ta) ta.addEventListener('input', debouncedSave);
+  };
+
+  // ── Exposed save trigger (called from UI interactions) ──
+  window.firebaseSave = debouncedSave;
+
+</script>
+
 <script>
 function showHome() {
   document.getElementById('home-view').classList.add('active');
@@ -939,6 +1080,7 @@ function showDetail(id) {
   document.getElementById('home-view').classList.remove('active');
   document.getElementById('detail-view').classList.add('active');
   window.scrollTo({ top: 0, behavior: 'instant' });
+  if (window.initFirebase) window.initFirebase();
 }
 function filterRecipes(tag, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -947,14 +1089,19 @@ function filterRecipes(tag, btn) {
     card.style.display = (tag === 'all' || (card.dataset.tags||'').includes(tag)) ? '' : 'none';
   });
 }
-function toggleGrocery(el) { el.classList.toggle('checked'); }
+function toggleGrocery(el) {
+  el.classList.toggle('checked');
+  if (window.firebaseSave) window.firebaseSave();
+}
 function clearGrocery() {
   document.querySelectorAll('.grocery-item.checked').forEach(el => el.classList.remove('checked'));
+  if (window.firebaseSave) window.firebaseSave();
 }
 function rate(star) {
   const stars = star.closest('.stars').querySelectorAll('.star');
   const idx = Array.from(stars).indexOf(star);
   stars.forEach((s, i) => s.classList.toggle('lit', i <= idx));
+  if (window.firebaseSave) window.firebaseSave();
 }
 function toggleMakeAgain(btn, val) {
   const yes = document.getElementById('ma-yes');
@@ -965,6 +1112,7 @@ function toggleMakeAgain(btn, val) {
   } else {
     no.style.background = '#c0392b'; no.style.color = '#fff'; no.style.borderColor = '#c0392b';
   }
+  if (window.firebaseSave) window.firebaseSave();
 }
 </script>
 </body>
